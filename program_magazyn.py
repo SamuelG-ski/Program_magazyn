@@ -84,7 +84,7 @@ while not program_end:
                 break
         else:
             print("\nBrak produktu w magazynie!")
-            operation_list.append(f"Sprawdzono aktualny stan magazyn dla produktu o nazwie: {product_name}, którego nie ma w magazynie!")
+            operation_list.append(f"Sprawdzono aktualny stan magazynu dla produktu o nazwie: {product_name}, którego nie ma w magazynie!")
     
     elif operation == "7":
         start_index = input("Podaj indeks początkowy: ")
