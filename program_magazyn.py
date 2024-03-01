@@ -59,7 +59,7 @@ while not program_end:
             })
             account_balance = account_balance - (amount_of_products * unit_price)
             print(f"\nProdukt został dodany do magazynu!")
-            operation_list.append(f"Zakupiono produktu o nazwie: {purchase_product}, Cena jednostkowa: {unit_price}, Ilość: {amount_of_products}")
+            operation_list.append(f"Zakupiono produkt o nazwie: {purchase_product}, Cena jednostkowa: {unit_price}, Ilość: {amount_of_products}")
             
         else:
             print("\nBrak wystarczających środków na koncie!")
