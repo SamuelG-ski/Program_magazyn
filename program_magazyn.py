@@ -1,3 +1,5 @@
+import json
+
 account_balance = 100000
 warehouse_products = [
     {
@@ -8,7 +10,43 @@ warehouse_products = [
 ]
 operation_list = []
 program_end = False
+
+def save_data():
+    with open("account_balance.txt", "w") as f:
+        f.write(str(account_balance))
+
+    with open("warhouse_products.txt", "w") as f:
+        json.dump(warehouse_products, f)
+
+    with open("operation_history.txt", "w") as f:
+        for operation in operation_list:
+            f.write(operation + '\n')
+
+def load_data():
+    global account_balance, warehouse_products, operation_list
+
+    try:
+        with open("account_balance.txt", "r") as f:
+            account_balance = float(f.read())
+    except FileNotFoundError:
+        pass
+
+    try:
+        with open("warehouse_products.txt", "r") as f:
+            warehouse_products = json.load(f)
+    except FileNotFoundError:
+        pass
+
+    try:
+        with open("operation_history.txt", "r") as f:
+            operation_list = f.readlines()
+    except FileNotFoundError:
+        pass
+
 print("Witaj w programie do zarządzania kontem firmy i magazynem!")
+
+load_data()
+
 while not program_end:
     operation = input("\nDostępne komendy:\n 1. Saldo\n 2. Sprzedaż\n 3. Zakup\n 4. Konto\n 5. Lista\n 6. Magazyn\n 7. Przegląd\n 8. Koniec\n")
 
@@ -107,3 +145,4 @@ while not program_end:
     elif operation == "8":
         program_end = True
 
+save_data()
